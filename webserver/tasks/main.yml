@@ -1,0 +1,14 @@
+---
+ - debug:
+    msg: "{{ hostvars[inventory_hostname].ansible_distribution }}"
+ - debug:
+    msg: "{{ hostvars[inventory_hostname].ansible_distribution_major_version }}"
+ - debug:
+    msg: "{{ hostvars[inventory_hostname].ansible_distribution_version }}" 
+ - name: include debian playbook
+   include: debian.yml
+   when: ansible_os_family == 'Debian'
+
+ - name: include debian playbook
+   include: redhat.yml
+   when: ansible_os_family == 'RedHat'

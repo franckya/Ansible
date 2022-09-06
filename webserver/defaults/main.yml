@@ -1,0 +1,4 @@
+---
+# defaults file for webserver
+redhat_webserver: httpd
+debian_webserver: apache2

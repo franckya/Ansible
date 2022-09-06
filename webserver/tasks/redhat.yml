@@ -1,0 +1,34 @@
+---
+
+- name: "Check if httpd is installed"
+  package_facts:
+    manager: "auto"
+
+- name: debug
+  debug:
+    msg: "{{ ansible_os_family }}"
+
+- name: "httpd or nginix result"
+  debug:
+    msg: "Webserver found"
+  when:
+     - "'httpd' in ansible_facts.packages or 'nginx' in ansible_facts.packages"
+
+- name: "webserver result"
+  debug:
+    msg: "Webserver NOT found"
+  when:
+    - "'httpd' not in ansible_facts.packages and 'nginx' not in ansible_facts.packages"
+
+- name: Installing webserver
+  yum:
+    name: "{{ redhat_webserver }}"
+    state: present
+  when: "'httpd' not in ansible_facts.packages and 'nginx' not in ansible_facts.packages"
+  notify: start webserver
+
+- name: 'Restart Webserver if Found'
+  service:
+    name: "{% if 'httpd' in ansible_facts.packages %}httpd{% else %}'nginx'{% endif %}"
+    state: restarted
+  when: "'httpd' in ansible_facts.packages or 'nginx' in ansible_facts.packages"
