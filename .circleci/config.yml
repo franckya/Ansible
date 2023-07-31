@@ -1,6 +1,4 @@
 version: 2.1
-orbs:
-  ansible: circleci/ansible@1.0
 
 jobs:
   build:
@@ -26,5 +24,4 @@ workflows:
   version: 2
   build_and_deploy:
     jobs:
-      - build:
-          context: franckya/Ansible
+      - build
