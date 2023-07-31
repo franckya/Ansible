@@ -1,0 +1,30 @@
+version: 2.1
+orbs:
+  ansible: circleci/ansible@1.0
+
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.8
+
+    steps:
+      - checkout
+
+      - run:
+          name: Install Ansible
+          command: pip install ansible
+
+      - run:
+          name: Run Ansible Playbook (webserver)
+          command: ansible-playbook -i webserver/tests/inventory webserver.yml
+
+      - run:
+          name: Run Ansible Playbook (sshd_config)
+          command: ansible-playbook -i webserver/tests/inventory sshd_config.yml
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build:
+          context: franckya/Ansible
