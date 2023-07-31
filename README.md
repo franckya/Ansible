@@ -1,5 +1,3 @@
-# Ansible
-Create Ansible for Production Environment
 # Ansible Playbook for Production Environment
 
 This repository contains an Ansible playbook for managing the production environment.
