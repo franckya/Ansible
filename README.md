@@ -25,3 +25,5 @@ Note: Ensure you have configured your SSH access and have necessary privileges o
 
 Contributing
 Contributions are welcome! If you find any issues or improvements, please feel free to submit a pull request.
+
+![image](https://github.com/franckya/Ansible/assets/67871275/8ef0324d-d901-4b4a-b12f-ff0014bdce10)
