@@ -20,7 +20,7 @@ To run the playbooks, use the following command:
 
 ```bash
 ansible-playbook sshd_config.yml -i inventory_file --user your_ssh_user
-
+```
 Replace inventory_file with the path to your inventory file containing the target server(s) information, and your_ssh_user with the appropriate SSH user.
 
 Note: Ensure you have configured your SSH access and have necessary privileges on the remote servers.
